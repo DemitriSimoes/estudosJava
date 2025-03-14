@@ -12,7 +12,7 @@ public class Main {
                 if (tampa = true) {
                     System.out.println("Caneta tampada");
                 } else {
-                    System.out.println("Caneta destampada");
+                    System.out.println("Tampar caneta");
                 }
             }
         }

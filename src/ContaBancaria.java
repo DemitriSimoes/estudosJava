@@ -37,59 +37,59 @@ public class ContaBancaria {
     }
 
     public ContaBancaria (){
-        numConta = 0;
-        status = false;
+        setNumConta(0);
+        setStatus(false);
     }
     public void abrirConta(String nome, String conta) {
-        tipo = conta;
-        dono = nome;
-        status = true;
-        if (numConta == 0) {
+        setTipo(conta);
+        setDono(nome);
+        setStatus(true);
+        if (getNumConta() == 0) {
             numConta += 1;
         } else {
             numConta++;
         }
         if (tipo.equals("CC")) {
-            saldo = 50.00;
-            System.out.println("Você recebeu: " + saldo);
+            setSaldo(50);
+            System.out.println("Você recebeu: " + getSaldo());
         } else if (tipo.equals("CP")) {
-            saldo = 150.00;
-            System.out.println("Você recebeu: " + saldo);
+            setSaldo(150);
+            System.out.println("Você recebeu: " + getSaldo());
         }
     }
     public void fecharConta() {
-        if (saldo == 0){
+        if (getSaldo() == 0){
             System.out.println("Sua conta foi fechada");
-            status = false;
-        } else if (saldo < 0){
+            setStatus(false);
+        } else if (getSaldo() < 0){
             System.out.println("Sua conta não pode ser fechada, pois está com saldo devedor");
         } else {
             System.out.println("Sua conta não pode ser fechada, favor sacar o saldo restante");
         }
     }
     public void depositar(double valor){
-        if (status == true){
-            saldo += valor;
-            System.out.println("Seu saldo: "+saldo);
+        if (getStatus() == true){
+            setSaldo(getSaldo() + valor);
+            System.out.println("Seu saldo: "+getSaldo());
         } else {
             System.out.println("Sua conta não foi aberta");
         }
-    };
+    }
     public void sacar(double valor){
-        if (status == true && saldo > 0){
+        if (getStatus() == true && getSaldo() > 0 && getSaldo() > valor){
             saldo -= valor;
-            System.out.println("Seu saldo: "+saldo);
+            System.out.println("Seu saldo: "+getSaldo());
         } else {
             System.out.println("Você não tem saldo suficiente");
         }
     }
     public void pagarMensal(){
-        if (tipo == "CC" && status == true){
-            saldo -= 12.00;
-            System.out.println("Seu saldo: "+saldo);
-        } else if (tipo == "CP" && status == true){
-            saldo -= 20.00;
-            System.out.println("Seu saldo: "+saldo);
+        if (getTipo() == "CC" && getStatus() == true && getSaldo() > -20){
+            setSaldo(getSaldo() - 12.00);
+            System.out.println("Seu saldo: "+getStatus());
+        } else if (getTipo() == "CP" && getStatus() == true && getSaldo() > -20){
+            setSaldo(getSaldo() - 20.00);
+            System.out.println("Seu saldo: "+getSaldo());
         } else {
             System.out.println("Não existe conta aberta");
         }

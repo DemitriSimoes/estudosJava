@@ -41,13 +41,17 @@ public class ContaBancaria {
         setStatus(false);
     }
     public void abrirConta(String nome, String conta) {
+        if (getDono() != null && !getDono().isEmpty()){
+            System.out.println("Conja já existente, favor fechar antes de abrir outra.");
+            return;
+        }
         setTipo(conta);
         setDono(nome);
         setStatus(true);
         if (getNumConta() == 0) {
             numConta += 1;
         } else {
-            numConta++;
+            numConta ++;
         }
         if (tipo.equals("CC")) {
             setSaldo(50);
@@ -58,13 +62,15 @@ public class ContaBancaria {
         }
     }
     public void fecharConta() {
-        if (getSaldo() == 0){
-            System.out.println("Sua conta foi fechada");
-            setStatus(false);
-        } else if (getSaldo() < 0){
-            System.out.println("Sua conta não pode ser fechada, pois está com saldo devedor");
+        if (getSaldo() > 0) {
+            System.out.println("Sua conta não pode ser fechada, favor sacar o saldo restante.");
+        } else if (getSaldo() < 0) {
+            System.out.println("Sua conta não pode ser fechada, pois está com saldo negativo");
         } else {
-            System.out.println("Sua conta não pode ser fechada, favor sacar o saldo restante");
+            setStatus(false);
+            setDono(null);
+            setTipo(null);
+            System.out.println("Sua conta foi fechada.");
         }
     }
     public void depositar(double valor){
@@ -76,7 +82,7 @@ public class ContaBancaria {
         }
     }
     public void sacar(double valor){
-        if (getStatus() == true && getSaldo() > 0 && getSaldo() > valor){
+        if (getStatus() == true && getSaldo() > 0 && getSaldo() >= valor){
             saldo -= valor;
             System.out.println("Seu saldo: "+getSaldo());
         } else {
@@ -84,10 +90,10 @@ public class ContaBancaria {
         }
     }
     public void pagarMensal(){
-        if (getTipo() == "CC" && getStatus() == true && getSaldo() > -20){
+        if (getTipo() == "CC" && getStatus() == true){
             setSaldo(getSaldo() - 12.00);
-            System.out.println("Seu saldo: "+getStatus());
-        } else if (getTipo() == "CP" && getStatus() == true && getSaldo() > -20){
+            System.out.println("Seu saldo: "+getSaldo());
+        } else if (getTipo() == "CP" && getStatus() == true){
             setSaldo(getSaldo() - 20.00);
             System.out.println("Seu saldo: "+getSaldo());
         } else {

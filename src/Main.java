@@ -17,5 +17,9 @@ public class Main {
         novaConta.abrirConta("Silva", "CP");
         System.out.println("Número da conta: "+novaConta.getNumConta());
         System.out.println("Dono da conta: "+novaConta.getDono());
+        // Interface:
+        ControleRemoto c = new ControleRemoto();
+        c.ligar();
+        c.abrirMenu();
     }
 }

@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
@@ -47,7 +47,27 @@ public class Main {
         uec01.lutar();
         uec01.marcarLuta(l[2], l[3]);
         uec01.lutar();
+        System.out.println("-------------------");
+        // Herança
+        ArrayList<Aluno> alunos = new ArrayList<>();
+        Aluno aluno1 = new Aluno("Ze", 50, "M", 1, "Programação");
+        alunos.add(aluno1);
+        Aluno aluno2 = new Aluno("Sil", 40, "F", 2, "Matemática");
+        alunos.add(aluno2);
+        System.out.println(alunos.getFirst().getNome());
+        System.out.println(aluno1.toString());
 
+        ArrayList<Professor> professores = new ArrayList<>();
+        Professor professor1 = new Professor("Guanaba", 30, "M", "Programação", 2500.50);
+        professores.add(professor1);
+        Professor professor2 = new Professor("G.Gua", 55, "M", "Matemática", 2250.50);
+        professores.add(professor2);
+        System.out.println(professor1.toString());
 
+        ArrayList<Funcionario> funcionarios = new ArrayList<>();
+        Funcionario funcionario1 = new Funcionario("Silva", 38, "F", "Secretaria", true);
+        funcionarios.add(funcionario1);
+        Funcionario funcionario2 = new Funcionario("Manoel", 65, "M", "Estoque", true);
+        System.out.println(funcionario1.toString());
     }
 }

@@ -69,5 +69,35 @@ public class Main {
         funcionarios.add(funcionario1);
         Funcionario funcionario2 = new Funcionario("Manoel", 65, "M", "Estoque", true);
         System.out.println(funcionario1.toString());
+        System.out.println("-------------------");
+        // Polimorfismo em sobreposição
+        Mamifero m = new Mamifero();
+        m.setIdade(2);
+        m.emitirSom();
+        m.alimentar();
+        System.out.println("-------");
+        Peixe p = new Peixe();
+        p.setIdade(20);
+        p.setPeso(30);
+        p.emitirSom();
+        p.alimentar();
+        System.out.println("-------");
+        Lobo lo = new Lobo();
+        System.out.print("Lobo faz: ");
+        lo.emitirSom();
+        Cachorro dog = new Cachorro();
+        System.out.print("Cachorro faz: ");
+        dog.emitirSom();
+        // Polimorfismo sobrecarga
+        dog.reagir("Olá");
+        dog.reagir("Sai");
+        dog.reagir(true);
+        dog.reagir(false);
+        dog.reagir(22, 10);
+        dog.reagir(10, 10);
+        dog.reagir(5, 8.50);
+        dog.reagir(8, 20.20);
+        dog.reagir(8, 50.05);
+
     }
 }
